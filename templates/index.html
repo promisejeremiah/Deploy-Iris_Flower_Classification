@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>IRIS MODEL</title>
+</head>
+<body class="bg-dark text-white">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-sm-3 text-center mt-5">
+        <form method="POST" action="{{ url_for('predict') }}">
+          <div class="form-group">
+            <label for="sepal_length">Sepal Length:</label>
+            <input type="number" min="0" max="100" step="any" value="0" class="form-control" id="sepal_length" name="sepal_length">
+          </div>
+          <div class="form-group">
+            <label for="sepal_width">Sepal Width:</label>
+            <input type="number" min="0" max="100" step="any" value="0" class="form-control" id="sepal_width" name="sepal_width">
+          </div>
+          <div class="form-group">
+            <label for="petal_length">Petal Length:</label>
+            <input type="number" min="0" max="100" step="any" value="0" class="form-control" id="petal_length" name="petal_length">
+          </div>
+          <div class="form-group">
+            <label for="petal_width">Petal Width:</label>
+            <input type="number" min="0" max="100" step="any" value="0" class="form-control" id="petal_width" name="petal_width">
+          </div>
+          <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
