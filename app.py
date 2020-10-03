@@ -6,16 +6,16 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 
 
-model = None #global variable for the model
 
 app = flask.Flask(__name__, template_folder='templates')
+model = None #global variable for the model
 
 #function that loads the model
-def load_model():
+def load_model(model_):
     global model
     # model variable refers to the global variable
-    with open('iris_model.pkl', 'rb') as f:
-        model = joblib.load(f)
+    model = joblib.load('iris_model.pkl', 'r') # no need to use with open . you can use the .pkl or sav extension with joblib
+    return model  # returns the loaded model 
 
 
 #route to the homepage
@@ -37,19 +37,19 @@ def predict():
         input_variables = [sepal_length, sepal_width, petal_length, petal_width]
         
         float_data = [float(x) for x in input_variables]
-        arr_data = np.array(float_data).reshape(1, 4)
+        arr_data = np.array(float_data).reshape(1,-1) #reshpae using (1,-1) for a single sample and (-1,1) for a single feature
         
-        pred = model.predict(arr_data[0])
+        model_1 = load_model(model)  #assigns the returned model into the variable
+        pred = model_1.predict(arr_data)
         
-        
-    return render_template('predict.html', prediction = pred)
+        return render_template('predict.html', prediction = pred[0])
 
 
 
 if __name__ == "__main__":
     print("server started .....")
     
-    load_model()
+    load_model(model)
 
     print("model loaded .....")
 
