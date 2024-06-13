@@ -1,1 +1,1 @@
-# Deploy-ML
+This project involves building a machine learning model to classify iris flowers into three species: setosa, versicolor, and virginica, based on their sepal and petal measurements. The dataset used for this project is the famous Iris dataset introduced by Ronald Fisher in 1936.
